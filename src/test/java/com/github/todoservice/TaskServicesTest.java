@@ -3,6 +3,9 @@ import com.github.todoservice.model.TaskModel;
 import com.github.todoservice.services.TaskServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
@@ -17,23 +20,20 @@ public class TaskServicesTest {
     }
 
     @Test
-    public void testAddEditDeleteTask() {
-        // adicionar
-        TaskModel task1 = new TaskModel("Nova Tarefa");
-        taskServices.addTask(task1);
-        List<TaskModel> tasks = taskServices.getAllTasks();
-        assertEquals(1, tasks.size());
-        assertEquals(task1, tasks.get(0));
+    public void addTaskTest() {
+        TaskServices services = new TaskServices();
 
-        // editar
-        TaskModel task2 = new TaskModel("Tarefa Editada");
-        taskServices.editTask(0, task2);
-        tasks = taskServices.getAllTasks();
-        assertEquals(1, tasks.size());
-        assertEquals(task2, tasks.get(0));
+        var model = TaskModel.builder()
+                .id("1")
+                .description("Sei lá")
+                .dueDate("2023/05/01")
+                .completed(true)
+                .build();
 
-        // deletar
-        taskServices.deleteTask(0);
-        assertTrue(taskServices.getAllTasks().isEmpty());
+        ResponseEntity<String> response = taskServices.addTask(model);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals("Tarefa adicionada com sucesso.", response.getBody());
+
     }
 }

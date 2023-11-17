@@ -1,5 +1,6 @@
 package com.github.todoservice.services;
 import com.github.todoservice.model.TaskModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,9 @@ public class TaskServices {
         return tasks;
     }
 
-    public void addTask(TaskModel task) {
+    public ResponseEntity<String> addTask(TaskModel task) {
         tasks.add(task);
+
     }
 
     public void editTask(int taskId, TaskModel task) {

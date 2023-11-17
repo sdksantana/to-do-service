@@ -27,7 +27,6 @@ public class TaskController {
     public ResponseEntity<String> addTask(@RequestBody TaskModel task) {
         try {
             taskServices.addTask(task);
-            tasks.add(task);
             return new ResponseEntity<>("Tarefa adicionada com sucesso.", HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>("Erro.", HttpStatus.BAD_REQUEST);
@@ -38,7 +37,6 @@ public class TaskController {
     public ResponseEntity<String> editTask(@PathVariable int taskId, @RequestBody TaskModel task) {
         try {
             taskServices.editTask(taskId, task);
-            tasks.set(taskId, task);
             return new ResponseEntity<>("Tarefa editada com sucesso.", HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>("Erro ao editar a tarefa.", HttpStatus.BAD_REQUEST);
@@ -49,7 +47,6 @@ public class TaskController {
     public ResponseEntity<String> deleteTask(@PathVariable int taskId) {
         try {
             taskServices.deleteTask(taskId);
-            tasks.remove(taskId);
             return new ResponseEntity<>("Tarefa removida com sucesso.", HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>("Erro ao remover a tarefa.", HttpStatus.BAD_REQUEST);
