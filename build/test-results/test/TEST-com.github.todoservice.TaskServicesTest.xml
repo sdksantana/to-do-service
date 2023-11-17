@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.github.todoservice.TaskServicesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-11-17T03:00:48" hostname="KAMARAL" time="0.018">
+  <properties/>
+  <testcase name="testAddEditDeleteTask()" classname="com.github.todoservice.TaskServicesTest" time="0.018"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
